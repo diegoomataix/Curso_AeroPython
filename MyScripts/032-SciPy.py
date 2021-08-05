@@ -62,11 +62,34 @@ y2 = dist_normal.cdf(x)
 # Ahora que ya hemos visualizado la distribución de las notas y que sabemos 
 # generar distribuciones normales. ¿Por qué no hacemos un test de Kolmogórov-Smirnov?
 # Se trata de ver lo bien o lo mal que se ajusta la distribución a una normal 
-bars = np.histogram(datos, bins=10)
-# bars /= 375
+bars = np.histogram(datos, bins=10)[0]
+# bars = st.histogram(datos, numbins=10, defaultlimits=(0,10))[0]
+bars = bars / 375
 
-plt.bar(np.arange(0,10), bars, alpha=0.5, width=1)
-plt.plot(x, y1, c='black', lw=2)
+# plt.bar(np.arange(0,10), bars, alpha=0.5, width=1)
+# plt.plot(x, y1, c='black', lw=2)
+# plt.grid(True)
 
+plt.hist(datos, np.linspace(0,10,51), cumulative=True, alpha=0.5)
+plt.plot(x, y2 * 375, lw=2, c='black')
+plt.xticks(range(0,11))
 plt.grid(True)
 
+datos2 = dist_normal.cdf
+print(st.kstest(datos, dist_normal.cdf))
+
+# Se rechaza la hipótesis nula si el valor p asociado al resultado observado es 
+# igual o menor que el nivel de significación establecido, convencionalmente 0,05 ó 0,01. 
+# Es decir, el valor p nos muestra la probabilidad de haber obtenido el resultado que hemos 
+# obtenido si suponemos que la hipótesis nula es cierta. 
+
+# Si probamos con st.normaltest que también comprueba la bondad del ajuste obtenemos un valor-p más alto:
+print(st.normaltest(datos))
+
+from sympy import init_session
+init_session(use_latex='matplotlib')
+
+# muu = symbols('mu')
+# sigmasq = symbols('sigma**2')
+
+print('En definitiva, parece que las notas esta vez siguieron una normal con', muu, '=3.97 y', sigmasq, '=2.57')
