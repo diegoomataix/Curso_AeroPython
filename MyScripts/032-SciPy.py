@@ -86,10 +86,10 @@ print(st.kstest(datos, dist_normal.cdf))
 # Si probamos con st.normaltest que también comprueba la bondad del ajuste obtenemos un valor-p más alto:
 print(st.normaltest(datos))
 
-from sympy import init_session
-init_session(use_latex='matplotlib')
+# from sympy import init_session
+# init_session(use_latex='matplotlib')
 
 # muu = symbols('mu')
 # sigmasq = symbols('sigma**2')
 
-print('En definitiva, parece que las notas esta vez siguieron una normal con', muu, '=3.97 y', sigmasq, '=2.57')
+# print('En definitiva, parece que las notas esta vez siguieron una normal con', muu, '=3.97 y', sigmasq, '=2.57')
