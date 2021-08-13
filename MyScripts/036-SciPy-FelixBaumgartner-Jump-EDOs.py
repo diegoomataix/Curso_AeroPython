@@ -111,10 +111,10 @@ vel = sol[:, 1]  # Segunda columna: velocidad
 with plt.style.context('seaborn-notebook'):
     fig, axes = plt.subplots(3, 1, sharex=True, figsize=(6, 6))
     line, = axes[0].plot(t, pos / 1e3, label="Position $y$")
-    axes[0].set_ylabel("Position (km)")
+    axes[0].set_ylabel("Position [km]")
     axes[1].plot(t, vel, '--', color=line.get_color(), label="Velocity $\dot{y}$")
-    axes[1].set_ylabel("Velocity (m / s)")
-    axes[1].set_xlabel("Time (s)")
+    axes[1].set_ylabel("Velocity [m/s]")
+    # axes[1].set_xlabel("Time (s)")
     axes[0].legend()
     axes[1].legend()
     axes[0].set_title("Felix Baumgartner free fall")
@@ -136,10 +136,10 @@ c = np.sqrt(gamma * R * T_ISA(pos))
 M = np.abs(vel) / c
 
 with plt.style.context('seaborn-notebook'):
-    plt.plot(t, M, 'r', label="Mach Number $M$")
+    plt.plot(t, M, 'r', label="Mach Number $\mathrm{M}$")
     plt.plot(t, np.ones_like(t), 'k--')
     plt.ylabel('Mach number')
-    plt.xlabel('Time (s)')
-    plt.title("Mach number")
+    plt.xlabel('Time [s]')
+    # plt.title("Mach number")
     plt.legend()
     plt.grid()
