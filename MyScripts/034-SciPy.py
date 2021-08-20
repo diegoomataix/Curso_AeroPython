@@ -34,14 +34,15 @@ def F(x):
     return np.log(x) - np.sin(x)
 # Para hacernos una idea de las posibles soluciones siempre podemos representar 
 # gráficamente esa función:
-# x = np.linspace(0, 10, num=100)
-# with plt.style.context('seaborn-notebook'):
-#     plt.plot(x, F(x), 'k', lw=2, label="$F(x)$")
-#     plt.plot(x, np.log(x), label="$\log{x}$")
-#     plt.plot(x, np.sin(x), label="$\sin{x}$")
-#     plt.plot(x, np.zeros_like(x), 'k--')
-#     plt.legend(loc=4)
-#     plt.grid()
+x = np.linspace(0, 10, num=100)
+with plt.style.context('seaborn-notebook'):
+    plt.plot(x, F(x), 'k', lw=2, label="$F(x)$")
+    plt.plot(x, np.log(x), label="$\log{x}$")
+    plt.plot(x, np.sin(x), label="$\sin{x}$")
+    plt.plot(x, np.zeros_like(x), 'k--')
+    plt.legend(loc=4)
+    plt.grid()
+    plt.show()
 # Y utilizando por ejemplo el método de Brent en el intervalo [0,3]:
 # print(optimize.brentq(F, 0, 3))
 
@@ -76,7 +77,9 @@ def A(x):
 x = np.linspace(0, 1)
 area = A(x)
 r = np.sqrt(area / np.pi)
-# plt.fill_between(x, r, -r, color="#ffcc00")
+plt.fill_between(x, r, -r, color="#ffcc00")
+plt.show()
+
 # ¿Cuál es la función $F$ ahora? Hay dos opciones: definir una función $F_{0.9}(M)$ 
 # que me da el número de Mach en la sección $0.9$ o una función $F(M; x)$ con la 
 # que puedo hallar el número de Mach en cualquier sección. 
@@ -115,12 +118,14 @@ print(optimize.newton(Kepler, 0.3, args=(0.0167, 0.3)))
 # Representa la curva resultante.
 N = 500
 
-# M = np.linspace(0, 2 * np.pi, N)
-# sol = np.zeros_like(M)
+M = np.linspace(0, 2 * np.pi, N)
+sol = np.zeros_like(M)
 
-# for ii in range(N):
-#     sol[ii] = optimize.newton(Kepler, sol[ii - 1], args=(0.249, M[ii]))
-# plt.plot(M, sol)
+for ii in range(N):
+    sol[ii] = optimize.newton(Kepler, sol[ii - 1], args=(0.249, M[ii]))
+plt.plot(M, sol)
+plt.show()
+
 # 4- Como último paso, solo tienes que meter parte del código que ya has escrito 
 # en un bucle que cambie el valor de la excentricidad 5 veces. 
 M = np.linspace(0, 2 * np.pi, N)

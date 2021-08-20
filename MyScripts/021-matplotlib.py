@@ -16,5 +16,5 @@ def frecuencias(f1=10.0, f2=100.0):
 
 # frecuencias()
 
-from ipywidgets import interact
+from ipywidgets import interact # Only works as Jupyter notebook
 interact(frecuencias, f1=(10.0,200.0), f2=(10.0,200.0))

@@ -23,13 +23,17 @@ tini = 0
 tfin = 3
 # Integrating and representing the solution
 sol = solve_ivp(f, (tini, tfin), y0)
-# plt.plot(sol.t, sol.y[0,:], 'o-') 
+plt.plot(sol.t, sol.y[0,:], 'o-') 
+plt.show()
+
 # Pero, ¿cómo se han seleccionado los puntos en los que se calcula la solución? 
 # El solver los ha calculado por nosotros. Si queremos tener control sobre estos 
 # puntos, podemos pasar de manera explícita el vector de tiempos:
 time = np.linspace(tini, tfin, 30)
 sol_2 = solve_ivp(f, (tini, tfin), y0, t_eval=time)
-# plt.plot(sol_2.t, sol_2.y[0, :], 'd-')
+plt.plot(sol_2.t, sol_2.y[0, :], 'd-')
+plt.show()
+
 # El solver siempre da los pasos que considere necesarios para calcular la solución,
 # pero sólo guarda los que nosotros le indicamos.
 print(f"function evaluations in sol 1: {sol.nfev}")
@@ -39,7 +43,8 @@ sol_3 = solve_ivp(f, (tini, tfin), y0, dense_output=True)
 print(sol_3.sol([1.14567, 2, 6]))
 t = np.linspace(tini, tfin, 45)
 y = sol_3.sol(t)
-# plt.plot(t, y[0, :], 'x-')
+plt.plot(t, y[0, :], 'x-')
+plt.show()
 
 ##_________________________ Higher order ODE ___________________________##
 # Tendremos que acordarnos ahora de cómo reducir las ecuaciones de orden. De nuevo, 
@@ -62,3 +67,4 @@ with plt.style.context('seaborn-notebook'):
     plt.plot(t, sol.y[1, :], '--k', label='$\dot{y}$')
     plt.legend()
     plt.grid()
+    plt.show()
