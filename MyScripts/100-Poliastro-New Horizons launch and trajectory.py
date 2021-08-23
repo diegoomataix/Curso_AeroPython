@@ -62,7 +62,7 @@ exit = Orbit.from_classical(
     time.Time("2006-01-19", scale="utc"),
 )
 
-norm(exit.v).to(u.km / u.s)
+print(norm(exit.v).to(u.km / u.s))
 
 # After a short coast in the parking orbit, the spacecraft was then injected 
 # into the desired heliocentric orbit by the Centaur second stage and Star 48B 
