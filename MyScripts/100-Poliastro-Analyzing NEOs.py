@@ -9,8 +9,9 @@
 # nearest to the Sun) is less than 1.3 au = 1.945 * 108 km from the Sun.
 
 from astropy import time
+# from astropy.time import Time
 
-from poliastro.bodies import Earth
+# from poliastro.bodies import Earth, Mars
 from poliastro.frames import Planes
 from poliastro.plotting import StaticOrbitPlotter
 from poliastro.twobody.orbit import Orbit
@@ -31,6 +32,8 @@ frame = StaticOrbitPlotter(plane=Planes.EARTH_ECLIPTIC)
 frame.plot(ganymed, label="Ganymed")
 frame.plot(amor, label="Amor")
 frame.plot(eros, label="Eros");
+# frame.plot_body_orbit(Earth, Time("2021-07-01", scale="tdb"))
+# frame.plot_body_orbit(Mars, Time("2021-07-01", scale="tdb"))
 
 # You can use the wildcards from that browser: * and ?.
 
